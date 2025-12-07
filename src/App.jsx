@@ -1,28 +1,31 @@
-import './index.css'
-import image from './assets/image.png'
 import { useState } from 'react'
+import StartPage  from './components/StartPage'
+import Quiz from './components/Quiz'
+
 export default function App() {
 
-  const [quiz, setQuiz] = useState(null)
+  const [quiz, setQuiz] = useState(false)
 
   function startQuiz() {
-    setQuiz()
-
+    setQuiz(quiz => !quiz)
+    document.getElementsByClassName('start-page').style.display = 'none'
   }
 
-
   return (
+
     <>
-     <main>
-      <img src={image}/>
 
-      <div className='start-page'>
-        <h1>Quizzical</h1>
-        <p>Some description if needed</p>
-        <button onClick={startQuiz}>Start quiz</button>
-      </div>
-
-     </main>
+    { 
+    quiz ?
+     (
+     <Quiz
+      />
+      ) 
+     : < StartPage
+      startQuiz={startQuiz}
+      />
+      
+    }
     </>
   )
 }
