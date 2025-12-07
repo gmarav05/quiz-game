@@ -1,6 +1,15 @@
 import './index.css'
 import image from './assets/image.png'
-function App() {
+import { useState } from 'react'
+export default function App() {
+
+  const [quiz, setQuiz] = useState(null)
+
+  function startQuiz() {
+    setQuiz()
+
+  }
+
 
   return (
     <>
@@ -10,12 +19,10 @@ function App() {
       <div className='start-page'>
         <h1>Quizzical</h1>
         <p>Some description if needed</p>
-        <button>Start quiz</button>
+        <button onClick={startQuiz}>Start quiz</button>
       </div>
 
      </main>
     </>
   )
 }
-
-export default App
